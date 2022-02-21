@@ -1,0 +1,16 @@
+---
+layout: headfooter
+---
+
+<div class="flex justify-center flex-wrap md:justify-start mx-auto my-14">
+  {% for post in site.posts %}
+    <div class="p-4 w-full md:w-1/2 lg:w-1/3">
+      <img class="mx-auto" src="/assets/img/posts/{{ post.img }}.jpg">
+      <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <h2 class="text-carmin text-2xl font-semibold">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </h2>
+      {{ post.excerpt }}
+    </div>
+  {% endfor %}
+</div>

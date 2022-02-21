@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="w-full flex justify-between px-7">
+  <div class="w-52">
+    <img src="{{ 'assets/img/AnaLago - Logo200.png' | relative_url }}">
+  </div>
+  <div class="flex justify-end">
+    {% include redessociais.html %}
+  </div>
+</div>
+<section class="max-w-screen-lg mx-auto">
+  {% include navbar.html %}
+</section>
+    {{ content }}
+
+  <div class="px-7 py-10 text-verde font-sans font-semibold text-2xl">
+    Me siga também em:
+  </div>
+  <div class="flex justify-start px-7">
+    {%include redessociais.html %}
+  </div>

@@ -1,0 +1,59 @@
+<nav x-data="{ mobileMenuOpen : false }" class="">  
+  <div class="flex justify-center">
+    <div class="flex items-center justify-end px-4 pb-4 pt-6">
+      <div class="block lg:hidden"><!-- botão -->
+        <button class="flex items-center px-3 py-2 border-2 rounded 
+                      {% if page.button == 'claro'  %}
+                      bg-white
+                      text-midnight border-midnight 
+                      hover:text-white hover:border-white
+                      {% else %}
+                      bg-midnight
+                      text-white border-white 
+                      hover:text-midnight hover:border-midnight
+                      {% endif %}
+                      bg-opacity-25"
+
+                      @click="mobileMenuOpen = !mobileMenuOpen">
+              <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+              </svg>
+        </button>
+      </div>
+    </div>
+    <div class="w-full flex absolute top-20 right-4">
+      <div class="w-full font-sans text-2xl flex-col items-center" 
+      :class="{ 'flex' : mobileMenuOpen , 'hidden' : !mobileMenuOpen}" 
+      @click.away="mobileMenuOpen = false">
+        {% for item in site.data.navigation %}
+        <div class="w-full h-16 px-4 py-2 text-center 
+          {% if page.url == item.link %}bg-cinza text-white
+          {% else %} bg-white text-black
+          {% endif %}
+        hover:text-black hover:bg-verde">
+        <a href="{{ item.link }}" class="block mt-4 lg:inline-block lg:mt-0">
+          {{ item.name }}
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="hidden w-full flex-grow lg:flex md:items-center">
+      <div class="font-sans text-2xl lg:flex-grow flex justify-start my-2">
+        {% for item in site.data.navigation %}
+        <div class="h-16 text-center p-4 font-normal mr-2 grow-0
+          {% if page.url == item.link %}border-b-4 border-verde
+          {% else %} border-0
+          {% endif %}
+        hover:bg-verde hover:text-black">
+        <a href="{{ item.link }}" class="h-full inline-block align-text-bottom">
+          {{ item.name }}
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</nav>
+
